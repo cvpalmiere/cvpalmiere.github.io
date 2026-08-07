@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carla Palmiere · Desenvolvimento e Gestão de Projetos</title>
+    <meta name="description" content="Portfólio de Carla Palmiere: desenvolvedora fullstack em Brasília. Projetos em Python, Flask e automação com IA." />
+
+    <meta property="og:title" content="Carla Palmiere · Desenvolvimento e Gestão de Projetos" />
+    <meta property="og:description" content="Portfólio de Carla Palmiere: desenvolvedora fullstack em Brasília." />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <!-- ESFERA 3D — FUNDO FIXO -->
+    <div class="sphere-bg" id="sphere-bg"></div>
+    <div class="sphere-overlay-left"></div>
+    <div class="sphere-overlay-bottom"></div>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-fechar" id="lightbox-fechar">&times;</span>
+        <img src="" alt="Certificado" id="lightbox-img" />
+    </div>
+
+    <!-- NAVBAR -->
+    <header id="navbar"></header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="main-content">
+
+        <!-- HERO -->
+        <section id="hero">
+            <div class="hero-inner">
+                <div class="badge reveal">
+                    <span class="badge-dot"></span>
+                    Aberta a oportunidades
+                </div>
+                <h1 class="reveal">
+                    Carla<br />
+                    <span class="text-primary">Palmiere</span>
+                </h1>
+                <p class="hero-role reveal">Desenvolvimento e Gestão de Projetos</p>
+                <p class="hero-desc reveal">
+                    Construo sistemas que buscam resolver problemas reais, transformando processos manuais em
+                    soluções digitais.
+                </p>
+                <div class="hero-cta reveal">
+                    <a href="#projetos" class="btn-primary">Ver projetos</a>
+                    <a href="#certificados" class="btn-outline">Certificados</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE -->
+        <section id="sobre">
+            <span class="section-label reveal">Sobre mim</span>
+            <h2 class="reveal">Quem sou eu</h2>
+            <div class="sobre-grid">
+                <div class="sobre-texto reveal">
+                    <p>
+                        Sou desenvolvedora backend em Brasília com
+                        <span class="text-destaque">1 ano e 4 meses de experiência</span> em automação e
+                        análise de requisitos. Minha jornada começou na automação de chatbots no VHF Bank,
+                        integrando ChatGPT e Gemini em fluxos de atendimento.
+                    </p>
+                    <p>
+                        Curso o <span class="text-destaque">2º semestre de Engenharia de Software</span>
+                    </p>
+                    <p>
+                        Fora da tecnologia, treinei
+                        <span class="text-destaque">8 anos de vôlei competitivo</span> e fiz entregas em fotografia em tempo real — disciplina, time e entrega sob pressão.
+                    </p>
+                </div>
+                <div class="sobre-skills reveal">
+                    <div class="skills-grid">
+                        <span>HTML/CSS/JS</span>
+                        <span>Python</span>
+                        <span>SQL</span>
+                        <span>Flask</span>
+                        <span>C</span>
+                        <span>Figma</span>
+                        <span>Git/GitHub</span>
+                        <span>Claude</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJETOS -->
+        <section id="projetos">
+            <span class="section-label reveal">Portfólio</span>
+            <h2 class="reveal">Trabalhos selecionados</h2>
+            <div class="projetos-grid">
+
+                <!-- MURAL FOTOGRÁFICO -->
+                <div class="projeto-card destaque reveal projeto-expandivel">
+                    <span class="projeto-tag">Full Stack · Entregue</span>
+                    <h3>Mural Fotográfico</h3>
+                    <p class="projeto-resumo">Sistema para fotógrafa com upload de 5 mil imagens, autenticação bcrypt, drag and drop e deploy em produção. A cliente reduziu o pós-produção de 2h para 15min.</p>
+                    <p class="projeto-detalhe">O Mural Fotográfico foi criado para permitir que uma fotógrafa entregue suas fotos de forma mais profissional e organizada. O sistema suporta o upload de mais de 5 mil imagens, download em lote via ZIP, montagem automática de grid personalizado e senhas individuais por evento para garantir segurança e privacidade. A cliente reduziu o tempo de pós-produção de 2 horas para apenas 15 minutos.</p>
+                    <div class="projeto-stack">
+                        <span>Python</span><span>Flask</span><span>SQLite</span><span>bcrypt</span>
+                    </div>
+                    <a href="https://github.com/cvpalmiere/mural_fotografico_modelo" target="_blank" rel="noreferrer" class="projeto-link-card">Ver repositório</a>
+                </div>
+
+                <!-- LIST TO PLAYLIST -->
+                <div class="projeto-card reveal projeto-expandivel">
+                    <span class="projeto-tag">API · CC50 Harvard</span>
+                    <h3>List To Playlist</h3>
+                    <p class="projeto-resumo">Transforma listas de músicas em playlists do Spotify com OAuth 2.0 e integração de API.</p>
+                    <p class="projeto-detalhe">O List To Playlist resolve o problema da demora em criar playlists manualmente no Spotify. Basta acessar o site, colar sua lista de músicas, autenticar com OAuth 2.0 via Spotify e pronto — a playlist é criada automaticamente com o nome escolhido direto na sua conta. Simples, rápido e integrado.</p>
+                    <div class="projeto-stack">
+                        <span>Python</span><span>Flask</span>
+                    </div>
+                    <a href="https://github.com/cvpalmiere/listtoplaylist" target="_blank" rel="noreferrer" class="projeto-link-card">Ver repositório</a>
+                </div>
+
+                <!-- LANDING PAGE -->
+                <div class="projeto-card reveal projeto-expandivel">
+                    <span class="projeto-tag">Frontend · Cliente real</span>
+                    <h3>Landing Page MCMV</h3>
+                    <p class="projeto-resumo">Site responsivo para construtora do programa MCMV com layout em bento grid.</p>
+                    <p class="projeto-detalhe">Meu primeiro projeto real como desenvolvedora web. Landing page profissional desenvolvida do zero para uma construtora especializada no programa Minha Casa Minha Vida. O projeto passou por todas as etapas: análise de negócios, levantamento de requisitos, design no Figma, codificação e deploy no GitHub Pages. Layout em Bento Grid com tipografia bold, paleta de alto contraste e botão de WhatsApp com animação. Totalmente responsivo.</p>
+                    <div class="projeto-stack">
+                        <span>HTML</span><span>CSS</span><span>JS</span>
+                    </div>
+                    <a href="https://github.com/cvpalmiere/construtora" target="_blank" rel="noreferrer" class="projeto-link-card">Ver repositório</a>
+                </div>
+
+                <!-- PALMIERE STUDIO -->
+                <div class="projeto-card reveal projeto-expandivel">
+                    <span class="projeto-tag">React · Projeto pessoal</span>
+                    <h3>Palmiere Studio</h3>
+                    <p class="projeto-resumo">Sistema de organização acadêmica com plano de estudo e acompanhamento.</p>
+                    <p class="projeto-detalhe">Organizador acadêmico pessoal desenvolvido para gerenciar minha rotina de estudos durante a faculdade de Engenharia de Software. Dashboard com a aula do dia e plano de estudo matinal em 3 blocos de 1 hora, gerenciamento de prazos e provas com contagem regressiva, calendário mensal, estatísticas de progresso e planos de estudo gerados automaticamente. Feito com React 18 e Vite, com persistência em localStorage.</p>
+                    <div class="projeto-stack">
+                        <span>React</span><span>Vite</span>
+                    </div>
+                    <a href="https://github.com/cvpalmiere/PalmiereStudio" target="_blank" rel="noreferrer" class="projeto-link-card">Ver repositório</a>
+                </div>
+
+                <!-- AUTOMAÇÃO CHATBOT -->
+                <div class="projeto-card reveal projeto-expandivel">
+                    <span class="projeto-tag">Automação · 16 meses</span>
+                    <h3>Automação de Chatbot</h3>
+                    <p class="projeto-resumo">Integração de ChatGPT e Gemini para automação de atendimento no VHF Bank.</p>
+                    <p class="projeto-detalhe">Durante 16 meses no VHF Bank, desenvolvi automações que eliminaram a necessidade de atendentes humanos em várias etapas. Criei fluxos de conversa inteligentes para filtrar e qualificar clientes, além de chatbots integrados com ChatGPT e Gemini que apresentavam a empresa, explicavam o negócio e respondiam perguntas em tempo real — tudo automatizado e disponível 24 horas por dia.</p>
+                    <div class="projeto-stack">
+                        <span>Python</span><span>APIs de IA</span>
+                    </div>
+                    <div class="projeto-link-card sem-link">Experiência profissional</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CERTIFICADOS -->
+        <section id="certificados">
+            <span class="section-label reveal">Formação</span>
+            <h2 class="reveal">Certificados</h2>
+            <p class="cert-desc reveal">Organizados por área — escolha uma categoria para ver o foco de cada curso.</p>
+            <div id="certificates-container"></div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer id="contato">
+            <div class="footer-grid">
+                <div class="reveal">
+                    <h2>Vamos construir algo juntos</h2>
+                    <p>Procuro oportunidades como Desenvolvedora FullStack Júnior, Analista de Automação
+                    ou estágio com foco em Python, APIs e sistemas com propósitos reais.</p>
+                    <div class="footer-botoes">
+                        <a href="https://wa.me/5561999011622" target="_blank" rel="noreferrer" class="btn-primary">WhatsApp</a>
+                        <a href="mailto:carlavick07@gmail.com" class="btn-outline">Email</a>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <p class="footer-label">Contato</p>
+                    <p>carlavick07@gmail.com</p>
+                    <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.3rem;">(61) 99901-1622</p>
+                    <div class="footer-links">
+                        <a href="https://github.com/cvpalmiere" target="_blank" rel="noreferrer">GitHub</a>
+                        <a href="https://linkedin.com/in/cvpalmiere" target="_blank" rel="noreferrer">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <p class="footer-copy">© 2026 Carla Palmiere</p>
+        </footer>
+
+    </main>
+
+    <script src="js/TextSphere.js"></script>
+    <script src="js/Navbar.js"></script>
+    <script src="js/Certificates.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>
