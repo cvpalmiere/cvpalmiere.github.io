@@ -11,34 +11,7 @@ function initCertificates() {
     ];
 
     const certificates = [
-        {
-            category: 'dev',
-            title: 'HTML, CSS, JavaScript e Figma',
-            issuer: 'Formação Front-end + Design',
-            meta: 'Interfaces · UX/UI · Responsivo',
-            focus: ['HTML', 'CSS', 'JavaScript', 'Figma'],
-            tone: 'ember',
-            image: 'assets/certificados/html-css-figma.png',
-            summary: 'Curso que combina design visual com programação front-end — a formação mais comum para quem quer dominar a criação de interfaces, exatamente a área explorada nos meus projetos.',
-            bullets: [
-                {
-                    title: 'Design e Prototipagem (Figma)',
-                    text: 'Layouts, protótipos interativos e design systems para planejar a experiência do usuário antes de programar.',
-                },
-                {
-                    title: 'Estrutura e Estilo (HTML e CSS)',
-                    text: 'Estrutura semântica e estilização moderna com Flexbox e Grid, com layout responsivo para celulares.',
-                },
-                {
-                    title: 'Interatividade (JavaScript)',
-                    text: 'Interações, animações e funcionalidades dinâmicas que respondem ao usuário.',
-                },
-                {
-                    title: 'Ferramentas de Publicação',
-                    text: 'Git e GitHub para versionamento e Vite para iniciar projetos modernos, integrando o design do Figma ao código final.',
-                },
-            ],
-        },
+        // ============ 1º — CC50 Harvard (seu certificado mais pesado) ============
         {
             category: 'dev',
             title: 'CC50 — Harvard (em português)',
@@ -83,6 +56,94 @@ function initCertificates() {
                 },
             ],
         },
+
+        // ============ 2º — Fluência em IA Anthropic (NOVO — certificação oficial pesadíssima) ============
+        {
+            category: 'ia',
+            title: 'Fluência em IA',
+            issuer: 'Anthropic',
+            meta: 'Engenharia de Prompt · Uso Estratégico · Safety',
+            focus: ['Claude', 'Prompt Engineering', 'APIs de IA', 'Safety'],
+            tone: 'orchid',
+            image: 'assets/certificados/fluencia_ia_anthropic.png',
+            summary: 'Certificação oficial da Anthropic com foco em uso profissional e seguro de modelos de IA generativa, alinhada com a prática real em automação de atendimento.',
+            bullets: [
+                {
+                    title: 'Domínio do Claude',
+                    text: 'Uso avançado do modelo Claude em tarefas de análise, criação de conteúdo e automação de processos.',
+                },
+                {
+                    title: 'Engenharia de Prompt',
+                    text: 'Técnicas para escrever instruções eficazes que melhoram drasticamente a qualidade das respostas dos modelos.',
+                },
+                {
+                    title: 'Uso Estratégico de IA',
+                    text: 'Como integrar IA em fluxos de trabalho reais com foco em produtividade, segurança e ética.',
+                },
+                {
+                    title: 'Segurança e Confiabilidade',
+                    text: 'Boas práticas para evitar alucinações, vieses e uso inadequado dos modelos em produção.',
+                },
+            ],
+        },
+
+        // ============ 3º — Automação com ChatGPT e Gemini (experiência real de 16 meses) ============
+        {
+            category: 'ia',
+            title: 'Automação com ChatGPT e Gemini',
+            issuer: 'Prática profissional · VHF Bank',
+            meta: '16 meses · Chatbots e fluxos',
+            focus: ['ChatGPT', 'Gemini', 'APIs', 'Python'],
+            tone: 'orchid',
+            image: null,
+            summary: 'Aplicação de modelos de linguagem em fluxos de atendimento reais, eliminando etapas manuais e reduzindo a dependência de atendentes humanos.',
+            bullets: [
+                {
+                    title: 'Integração de APIs de IA',
+                    text: 'Conexão de ChatGPT e Gemini a fluxos de atendimento e regras de negócio.',
+                },
+                {
+                    title: 'Desenho de conversas',
+                    text: 'Fluxos que entendem intenção, tratam exceções e escalam quando necessário.',
+                },
+                {
+                    title: 'Resultado',
+                    text: 'Processos manuais transformados em automação contínua e mensurável.',
+                },
+            ],
+        },
+
+        // ============ 4º — HTML, CSS, JavaScript e Figma ============
+        {
+            category: 'dev',
+            title: 'HTML, CSS, JavaScript e Figma',
+            issuer: 'Formação Front-end + Design',
+            meta: 'Interfaces · UX/UI · Responsivo',
+            focus: ['HTML', 'CSS', 'JavaScript', 'Figma'],
+            tone: 'ember',
+            image: 'assets/certificados/html-css-figma.png',
+            summary: 'Curso que combina design visual com programação front-end — a formação mais comum para quem quer dominar a criação de interfaces, exatamente a área explorada nos meus projetos.',
+            bullets: [
+                {
+                    title: 'Design e Prototipagem (Figma)',
+                    text: 'Layouts, protótipos interativos e design systems para planejar a experiência do usuário antes de programar.',
+                },
+                {
+                    title: 'Estrutura e Estilo (HTML e CSS)',
+                    text: 'Estrutura semântica e estilização moderna com Flexbox e Grid, com layout responsivo para celulares.',
+                },
+                {
+                    title: 'Interatividade (JavaScript)',
+                    text: 'Interações, animações e funcionalidades dinâmicas que respondem ao usuário.',
+                },
+                {
+                    title: 'Ferramentas de Publicação',
+                    text: 'Git e GitHub para versionamento e Vite para iniciar projetos modernos, integrando o design do Figma ao código final.',
+                },
+            ],
+        },
+
+        // ============ 5º — SQL e Modelagem de Dados ============
         {
             category: 'db',
             title: 'SQL e Modelagem de Dados',
@@ -107,6 +168,8 @@ function initCertificates() {
                 },
             ],
         },
+
+        // ============ 6º — IA e Habilidades Humanas — USP ============
         {
             category: 'pessoas',
             title: 'IA e Habilidades Humanas para Gestão de Equipes',
@@ -128,30 +191,6 @@ function initCertificates() {
                 {
                     title: 'Diferencial de portfólio',
                     text: 'Mostra preparo para entender tanto as tecnologias quanto as pessoas que as constroem.',
-                },
-            ],
-        },
-        {
-            category: 'ia',
-            title: 'Automação com ChatGPT e Gemini',
-            issuer: 'Prática profissional · VHF Bank',
-            meta: '16 meses · Chatbots e fluxos',
-            focus: ['ChatGPT', 'Gemini', 'APIs', 'Python'],
-            tone: 'orchid',
-            image: null,
-            summary: 'Aplicação de modelos de linguagem em fluxos de atendimento reais, eliminando etapas manuais e reduzindo a dependência de atendentes humanos.',
-            bullets: [
-                {
-                    title: 'Integração de APIs de IA',
-                    text: 'Conexão de ChatGPT e Gemini a fluxos de atendimento e regras de negócio.',
-                },
-                {
-                    title: 'Desenho de conversas',
-                    text: 'Fluxos que entendem intenção, tratam exceções e escalam quando necessário.',
-                },
-                {
-                    title: 'Resultado',
-                    text: 'Processos manuais transformados em automação contínua e mensurável.',
                 },
             ],
         },
