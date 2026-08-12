@@ -11,7 +11,7 @@ function initCertificates() {
     ];
 
     const certificates = [
-        // ============ 1º — CC50 Harvard (seu certificado mais pesado) ============
+        // ============ 1º — CC50 Harvard ============
         {
             category: 'dev',
             title: 'CC50 — Harvard (em português)',
@@ -57,7 +57,7 @@ function initCertificates() {
             ],
         },
 
-        // ============ 2º — Fluência em IA Anthropic (NOVO — certificação oficial pesadíssima) ============
+        // ============ 2º — Fluência em IA — Anthropic ============
         {
             category: 'ia',
             title: 'Fluência em IA',
@@ -87,7 +87,7 @@ function initCertificates() {
             ],
         },
 
-        // ============ 3º — Automação com ChatGPT e Gemini (experiência real de 16 meses) ============
+        // ============ 3º — Automação com ChatGPT e Gemini ============
         {
             category: 'ia',
             title: 'Automação com ChatGPT e Gemini',
@@ -143,28 +143,32 @@ function initCertificates() {
             ],
         },
 
-        // ============ 5º — SQL e Modelagem de Dados ============
+        // ============ 5º — Database Foundations — Oracle ============
         {
             category: 'db',
-            title: 'SQL e Modelagem de Dados',
-            issuer: 'Trilha CC50 + prática em projetos',
-            meta: 'Consultas · Modelagem · Integridade',
-            focus: ['SQL', 'SQLite', 'Modelagem'],
+            title: 'Database Foundations',
+            issuer: 'Oracle',
+            meta: 'Em andamento · Modelagem · SQL · Oracle APEX',
+            focus: ['SQL', 'Oracle DB', 'Modelagem', 'APEX'],
             tone: 'sky',
             image: null,
-            summary: 'Fundamentos de banco de dados aplicados nos meus projetos reais, como o Mural Fotográfico, que armazena e organiza mais de 5 mil imagens.',
+            summary: 'Curso oficial da Oracle com foco em design de banco de dados, modelagem relacional e introdução ao SQL. Currículo orientado a projeto com certificação reconhecida pelo setor.',
             bullets: [
                 {
-                    title: 'Consultas SQL',
-                    text: 'SELECT, JOIN, agregações e filtros para extrair informação útil dos dados.',
+                    title: 'Modelagem de Dados',
+                    text: 'Técnicas de design de banco de dados, diagrama entidade-relacionamento (ERD) e refinamento do modelo de dados.',
                 },
                 {
-                    title: 'Modelagem relacional',
-                    text: 'Tabelas, chaves, relacionamentos e normalização pensando em integridade.',
+                    title: 'Oracle SQL Developer Data Modeler',
+                    text: 'Ferramenta profissional para criar e mapear modelos físicos a partir de modelos lógicos.',
                 },
                 {
-                    title: 'Aplicação prática',
-                    text: 'Integração do banco com back-end em Python/Flask e autenticação segura.',
+                    title: 'Introdução ao SQL',
+                    text: 'Criação, execução e salvamento de instruções SQL no Oracle Application Express (APEX).',
+                },
+                {
+                    title: 'Certificação Oracle',
+                    text: 'Curso preparatório com reconhecimento do setor e exames intermediário, final e cumulativo ao longo de 6 seções.',
                 },
             ],
         },
@@ -259,7 +263,7 @@ function initCertificates() {
             </div>
             ${cert.image
                 ? `<button class="cert-ver-btn" data-img="${cert.image}">Ver certificado</button>`
-                : `<span class="cert-ver-btn sem-link" style="pointer-events:none; cursor:default;">Em breve</span>`
+                : `<span class="cert-ver-btn sem-link" style="pointer-events:none; cursor:default;">Ver certificado</span>`
             }
         `;
 
