@@ -65,7 +65,7 @@ function initCertificates() {
             meta: 'Engenharia de Prompt · Uso Estratégico · Safety',
             focus: ['Claude', 'Prompt Engineering', 'APIs de IA', 'Safety'],
             tone: 'orchid',
-            image: 'assets/certificados/fluencia_ia_anthropic.png',
+            image: 'assets/certificados/fluencia_em_IA_Anthropic.png',
             summary: 'Certificação oficial da Anthropic com foco em uso profissional e seguro de modelos de IA generativa, alinhada com a prática real em automação de atendimento.',
             bullets: [
                 {
