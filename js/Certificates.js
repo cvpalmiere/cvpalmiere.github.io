@@ -1,4 +1,8 @@
-nfunction initCertificates() {
+// ============================================================
+// CERTIFICATES.JS — Renderiza os certificados dinamicamente
+// ============================================================
+
+function initCertificates() {
     const container = document.getElementById('certificates-container');
     if (!container) return;
 
@@ -173,7 +177,7 @@ nfunction initCertificates() {
             ],
         },
 
-// ============ 6º — IA e Habilidades Humanas — USP ============
+        // ============ 6º — IA e Habilidades Humanas — USP ============
         {
             category: 'pessoas',
             title: 'IA e Habilidades Humanas para Gestão de Equipes',
@@ -212,11 +216,11 @@ nfunction initCertificates() {
             bullets: [
                 {
                     title: 'Liderança e Representação',
-                    text: 'Atuação direta como vice-representante da turma de Engenharia de Software no CEUB.',
+                    text: 'Atuação direta como vice-representante da turma de Engenharia de Software no CEUB[cite: 1, 2].',
                 },
                 {
                     title: 'Período e Dedicação',
-                    text: 'Atividade exercida entre 09 de fevereiro e 04 de julho de 2026, com carga horária reconhecida de 20 horas.',
+                    text: 'Atividade exercida entre 09 de fevereiro e 04 de julho de 2026, com carga horária reconhecida de 20 horas[cite: 1, 2].',
                 },
                 {
                     title: 'Desenvolvimento de Soft Skills',
@@ -224,7 +228,7 @@ nfunction initCertificates() {
                 },
             ],
         }
-    ]; 
+    ];
 
     let activeCategory = 'todos';
 
