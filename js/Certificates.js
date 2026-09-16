@@ -173,7 +173,7 @@ function initCertificates() {
             ],
         },
 
-        // ============ 6º — IA e Habilidades Humanas — USP ============
+// ============ 6º — IA e Habilidades Humanas — USP ============
         {
             category: 'pessoas',
             title: 'IA e Habilidades Humanas para Gestão de Equipes',
@@ -198,7 +198,33 @@ function initCertificates() {
                 },
             ],
         },
-    ];
+
+        // ============ 7º — Representação de Turma — CEUB ============
+        {
+            category: 'pessoas',
+            title: 'Vice-Representante de Turma',
+            issuer: 'CEUB',
+            meta: '20 horas · 1º Semestre 2026',
+            focus: ['Liderança', 'Comunicação', 'Mediação', 'Soft Skills'],
+            tone: 'sage',
+            image: 'assets/certificados/representante-turma.png',
+            summary: 'Atuação como ponte entre os alunos do curso de Engenharia de Software e a instituição durante o 1º semestre de 2026, desenvolvendo habilidades fundamentais de gestão e comunicação.',
+            bullets: [
+                {
+                    title: 'Liderança e Representação',
+                    text: 'Atuação direta como vice-representante da turma de Engenharia de Software no CEUB.',
+                },
+                {
+                    title: 'Período e Dedicação',
+                    text: 'Atividade exercida entre 09 de fevereiro e 04 de julho de 2026, com carga horária reconhecida de 20 horas.',
+                },
+                {
+                    title: 'Desenvolvimento de Soft Skills',
+                    text: 'Aprimoramento prático de habilidades como mediação de demandas, escuta ativa, organização e comunicação institucional.',
+                },
+            ],
+        }
+    ]; 
 
     let activeCategory = 'todos';
 
