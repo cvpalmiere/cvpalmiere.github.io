@@ -207,7 +207,7 @@ nfunction initCertificates() {
             meta: '20 horas · 1º Semestre 2026',
             focus: ['Liderança', 'Comunicação', 'Mediação', 'Soft Skills'],
             tone: 'sage',
-            image: 'assets/certificados/repersentante de turma 1 Semestre.pdf',
+            image: 'assets/certificados/ViceRepresentante1Semestre.pdf',
             summary: 'Atuação como ponte entre os alunos do curso de Engenharia de Software e a instituição durante o 1º semestre de 2026, desenvolvendo habilidades fundamentais de gestão e comunicação.',
             bullets: [
                 {
