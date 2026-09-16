@@ -95,7 +95,15 @@ function initRevealAnimations() {
         }
     );
 
-    reveals.forEach((el) => observer.observe(el));
+    reveals.forEach((el) => {
+        observer.observe(el);
+        
+        // Força a exibição imediata se o elemento já estiver visível na carga da página
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) {
+            el.classList.add('visible');
+        }
+    });
 }
 
 // ============================================================
