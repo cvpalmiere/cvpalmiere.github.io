@@ -27,7 +27,7 @@ function initCertificates() {
             meta: '8 horas · Concluído em 01/10/2026',
             focus: ['Power BI', 'Dashboards', 'DAX', 'Power Query'],
             tone: 'sky',
-            image: null, // Definir o caminho da imagem (ex.: 'assets/certificados/power-bi.png') para ativar o botão
+            image: 'assets/certificados/intensivo_HASHTAG_Power BI.png',
             summary: 'Curso intensivo de Power BI, focado em transformar dados brutos em painéis claros para apoiar a tomada de decisão.',
             bullets: [
                 {
