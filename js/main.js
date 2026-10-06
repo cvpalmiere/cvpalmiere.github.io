@@ -2,9 +2,11 @@
 // MAIN.JS — Orquestra todo o portfólio
 // ============================================================
 
+// Inicializa os módulos após o DOM carregar; Projects roda antes do reveal para ter seus elementos observados.
 document.addEventListener('DOMContentLoaded', () => {
     initSphere();
     initNavbar();
+    initProjects();
     initCertificates();
     initRevealAnimations();
     initSmoothScroll();
@@ -14,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================================
 // 1. ESFERA 3D NO FUNDO
 // ============================================================
+
+// Cria a esfera de texto e a anexa ao fundo fixo como elemento puramente visual.
 function initSphere() {
     const container = document.getElementById('sphere-bg');
     if (!container) return;
@@ -38,6 +42,8 @@ function initSphere() {
 // ============================================================
 // 2. LIGHTBOX
 // ============================================================
+
+// Configura o fechamento do lightbox por botão, fundo e tecla ESC para facilitar a saída em qualquer dispositivo.
 function initLightbox() {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
@@ -45,14 +51,12 @@ function initLightbox() {
 
     if (!lightbox) return;
 
+    // Fecha o lightbox e limpa a imagem para não exibir o certificado anterior na próxima abertura.
     function fecharLightbox() {
         lightbox.classList.remove('aberto');
-        if (lightboxImg) {
-            lightboxImg.src = '';
-        }
+        if (lightboxImg) lightboxImg.src = '';
     }
 
-    // Fecha no X
     if (fecharBtn) {
         fecharBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -60,14 +64,11 @@ function initLightbox() {
         });
     }
 
-    // Fecha clicando no fundo escuro
+    // Fecha ao clicar no fundo escuro, mas não ao clicar na própria imagem.
     lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            fecharLightbox();
-        }
+        if (e.target === lightbox) fecharLightbox();
     });
 
-    // Fecha com ESC
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && lightbox.classList.contains('aberto')) {
             fecharLightbox();
@@ -76,17 +77,17 @@ function initLightbox() {
 }
 
 // ============================================================
-// 3. REVEAL ANIMATIONS (Scroll)
+// 3. ANIMAÇÃO DE ENTRADA (SCROLL)
 // ============================================================
+
+// Revela elementos .reveal ao entrar na tela para dar ritmo à leitura da página.
 function initRevealAnimations() {
     const reveals = document.querySelectorAll('.reveal');
 
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         },
         {
@@ -97,18 +98,18 @@ function initRevealAnimations() {
 
     reveals.forEach((el) => {
         observer.observe(el);
-        
-        // Força a exibição imediata se o elemento já estiver visível na carga da página
+
+        // Exibe de imediato o que já está visível no carregamento, evitando conteúdo invisível no topo.
         const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-            el.classList.add('visible');
-        }
+        if (rect.top < window.innerHeight) el.classList.add('visible');
     });
 }
 
 // ============================================================
-// 4. SMOOTH SCROLL (para links internos)
+// 4. ROLAGEM SUAVE (LINKS INTERNOS)
 // ============================================================
+
+// Anima a rolagem até a seção de destino em links âncora para uma navegação mais fluida.
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
