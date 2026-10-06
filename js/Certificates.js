@@ -262,45 +262,68 @@ function initCertificates() {
         return filtrosDiv;
     }
 
-    function renderCard(cert) {
+function renderCard(cert) {
         const article = document.createElement('article');
         article.className = 'cert-card reveal';
 
+        // Estrutura do Card: Cabeçalho visível + Detalhes ocultos + Botões
         article.innerHTML = `
             <div class="cert-header">
                 <div>
                     <p class="cert-emissor ${cert.tone}">${cert.issuer}</p>
                     <h3>${cert.title}</h3>
                 </div>
-                <span class="cert-badge">Certificado</span>
             </div>
-            <p class="cert-meta">${cert.meta}</p>
-            <p class="cert-summary">${cert.summary}</p>
-            <div class="cert-bullets">
-                ${cert.bullets
-                    .map(
-                        (b) => `
-                    <div class="cert-bullet">
-                        <p class="cert-bullet-title">${b.title}</p>
-                        <p class="cert-bullet-text">${b.text}</p>
-                    </div>
-                `
-                    )
-                    .join('')}
+            
+            <div class="cert-detalhes-container">
+                <p class="cert-meta">${cert.meta}</p>
+                <p class="cert-summary">${cert.summary}</p>
+                <div class="cert-bullets">
+                    ${cert.bullets
+                        .map(
+                            (b) => `
+                        <div class="cert-bullet">
+                            <p class="cert-bullet-title">${b.title}</p>
+                            <p class="cert-bullet-text">${b.text}</p>
+                        </div>
+                    `
+                        )
+                        .join('')}
+                </div>
+                <div class="cert-focus">
+                    ${cert.focus.map((f) => `<span>${f}</span>`).join('')}
+                </div>
             </div>
-            <div class="cert-focus">
-                ${cert.focus.map((f) => `<span>${f}</span>`).join('')}
+
+            <div class="cert-actions">
+                <button class="cert-btn-mais">Ver mais sobre</button>
+                ${cert.image
+                    ? `<button class="cert-ver-btn" data-img="${cert.image}">Ver certificado</button>`
+                    : `<span class="cert-ver-btn sem-link" style="pointer-events:none; cursor:default;">Sem imagem</span>`
+                }
             </div>
-            ${cert.image
-                ? `<button class="cert-ver-btn" data-img="${cert.image}">Ver certificado</button>`
-                : `<span class="cert-ver-btn sem-link" style="pointer-events:none; cursor:default;">Ver certificado</span>`
-            }
         `;
 
-        // Evento do botão "Ver certificado"
-        const btn = article.querySelector('.cert-ver-btn');
-        if (btn && cert.image) {
-            btn.addEventListener('click', (e) => {
+        // Lógica de Expandir/Recolher Detalhes
+        const btnMais = article.querySelector('.cert-btn-mais');
+        const containerDetalhes = article.querySelector('.cert-detalhes-container');
+
+        btnMais.addEventListener('click', () => {
+            const estaExpandido = containerDetalhes.classList.contains('expandido');
+            
+            if (estaExpandido) {
+                containerDetalhes.classList.remove('expandido');
+                btnMais.textContent = 'Ver mais sobre';
+            } else {
+                containerDetalhes.classList.add('expandido');
+                btnMais.textContent = 'Ocultar detalhes';
+            }
+        });
+
+        // Lógica do botão "Ver certificado" (Lightbox)
+        const btnVer = article.querySelector('.cert-ver-btn');
+        if (btnVer && cert.image) {
+            btnVer.addEventListener('click', (e) => {
                 e.stopPropagation();
                 abrirLightbox(cert.image);
             });
