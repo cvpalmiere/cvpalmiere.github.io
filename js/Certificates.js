@@ -1,21 +1,81 @@
 // ============================================================
-// CERTIFICATES.JS — Renderiza os certificados dinamicamente
+// CERTIFICATES.JS — Renderiza os certificados em cards compactos
 // ============================================================
 
+// Monta filtros e cards; depende de ICONES, vincularAcordeao (Ui.js) e do lightbox da página.
 function initCertificates() {
     const container = document.getElementById('certificates-container');
     if (!container) return;
 
+    // Categorias de filtro; o id é o mesmo usado no campo "category" de cada certificado.
     const categories = [
-        { id: 'todos', label: 'Todos', tone: 'ember' },
-        { id: 'dev', label: 'Desenvolvimento', tone: 'ember' },
-        { id: 'db', label: 'Banco de Dados', tone: 'sky' },
-        { id: 'pessoas', label: 'Gestão de Pessoas', tone: 'sage' },
-        { id: 'ia', label: 'IA', tone: 'orchid' },
+        { id: 'todos', label: 'Todos' },
+        { id: 'dados', label: 'Análise de Dados' },
+        { id: 'db', label: 'Banco de Dados' },
+        { id: 'dev', label: 'Desenvolvimento' },
+        { id: 'ia', label: 'IA' },
+        { id: 'pessoas', label: 'Gestão de Pessoas' },
     ];
 
+    // Lista ordenada por relevância para o objetivo atual (dados e BI primeiro).
     const certificates = [
-        // ============ 1º — CC50 Harvard ============
+        // ============ Intensivão de Power BI — Hashtag Treinamentos ============
+        {
+            category: 'dados',
+            title: 'Intensivão de Power BI',
+            issuer: 'Hashtag Treinamentos',
+            meta: '8 horas · Concluído em 01/10/2026',
+            focus: ['Power BI', 'Dashboards', 'DAX', 'Power Query'],
+            tone: 'sky',
+            image: null, // Definir o caminho da imagem (ex.: 'assets/certificados/power-bi.png') para ativar o botão
+            summary: 'Curso intensivo de Power BI, focado em transformar dados brutos em painéis claros para apoiar a tomada de decisão.',
+            bullets: [
+                {
+                    title: 'Tratamento de dados',
+                    text: 'Importação e preparação de bases com Power Query para deixar os dados prontos para análise.',
+                },
+                {
+                    title: 'Medidas e cálculos',
+                    text: 'Criação de indicadores com DAX para responder perguntas de negócio.',
+                },
+                {
+                    title: 'Dashboards',
+                    text: 'Construção de painéis interativos com gráficos, filtros e visão executiva dos resultados.',
+                },
+            ],
+        },
+
+        // ============ Database Foundations — Oracle ============
+        {
+            category: 'db',
+            title: 'Database Foundations',
+            issuer: 'Oracle',
+            meta: 'Em andamento · Modelagem · SQL · Oracle APEX',
+            focus: ['SQL', 'Oracle DB', 'Modelagem', 'APEX'],
+            tone: 'sky',
+            image: null,
+            summary: 'Curso oficial da Oracle com foco em design de banco de dados, modelagem relacional e introdução ao SQL. Currículo orientado a projeto com certificação reconhecida pelo setor.',
+            bullets: [
+                {
+                    title: 'Modelagem de Dados',
+                    text: 'Técnicas de design de banco de dados, diagrama entidade-relacionamento (ERD) e refinamento do modelo de dados.',
+                },
+                {
+                    title: 'Oracle SQL Developer Data Modeler',
+                    text: 'Ferramenta profissional para criar e mapear modelos físicos a partir de modelos lógicos.',
+                },
+                {
+                    title: 'Introdução ao SQL',
+                    text: 'Criação, execução e salvamento de instruções SQL no Oracle Application Express (APEX).',
+                },
+                {
+                    title: 'Certificação Oracle',
+                    text: 'Curso preparatório com reconhecimento do setor e exames intermediário, final e cumulativo ao longo de 6 seções.',
+                },
+            ],
+        },
+
+        // ============ CC50 — Harvard ============
         {
             category: 'dev',
             title: 'CC50 — Harvard (em português)',
@@ -61,7 +121,7 @@ function initCertificates() {
             ],
         },
 
-        // ============ 2º — Fluência em IA — Anthropic ============
+        // ============ Fluência em IA — Anthropic ============
         {
             category: 'ia',
             title: 'Fluência em IA',
@@ -91,33 +151,7 @@ function initCertificates() {
             ],
         },
 
-        // ============ 3º — Automação com ChatGPT e Gemini ============
-        {
-            category: 'ia',
-            title: 'Automação com ChatGPT e Gemini',
-            issuer: 'Prática profissional · VHF Bank',
-            meta: '16 meses · Chatbots e fluxos',
-            focus: ['ChatGPT', 'Gemini', 'APIs', 'Python'],
-            tone: 'orchid',
-            image: null,
-            summary: 'Aplicação de modelos de linguagem em fluxos de atendimento reais, eliminando etapas manuais e reduzindo a dependência de atendentes humanos.',
-            bullets: [
-                {
-                    title: 'Integração de APIs de IA',
-                    text: 'Conexão de ChatGPT e Gemini a fluxos de atendimento e regras de negócio.',
-                },
-                {
-                    title: 'Desenho de conversas',
-                    text: 'Fluxos que entendem intenção, tratam exceções e escalam quando necessário.',
-                },
-                {
-                    title: 'Resultado',
-                    text: 'Processos manuais transformados em automação contínua e mensurável.',
-                },
-            ],
-        },
-
-        // ============ 4º — HTML, CSS, JavaScript e Figma ============
+        // ============ HTML, CSS, JavaScript e Figma ============
         {
             category: 'dev',
             title: 'HTML, CSS, JavaScript e Figma',
@@ -147,37 +181,7 @@ function initCertificates() {
             ],
         },
 
-        // ============ 5º — Database Foundations — Oracle ============
-        {
-            category: 'db',
-            title: 'Database Foundations',
-            issuer: 'Oracle',
-            meta: 'Em andamento · Modelagem · SQL · Oracle APEX',
-            focus: ['SQL', 'Oracle DB', 'Modelagem', 'APEX'],
-            tone: 'sky',
-            image: null,
-            summary: 'Curso oficial da Oracle com foco em design de banco de dados, modelagem relacional e introdução ao SQL. Currículo orientado a projeto com certificação reconhecida pelo setor.',
-            bullets: [
-                {
-                    title: 'Modelagem de Dados',
-                    text: 'Técnicas de design de banco de dados, diagrama entidade-relacionamento (ERD) e refinamento do modelo de dados.',
-                },
-                {
-                    title: 'Oracle SQL Developer Data Modeler',
-                    text: 'Ferramenta profissional para criar e mapear modelos físicos a partir de modelos lógicos.',
-                },
-                {
-                    title: 'Introdução ao SQL',
-                    text: 'Criação, execução e salvamento de instruções SQL no Oracle Application Express (APEX).',
-                },
-                {
-                    title: 'Certificação Oracle',
-                    text: 'Curso preparatório com reconhecimento do setor e exames intermediário, final e cumulativo ao longo de 6 seções.',
-                },
-            ],
-        },
-
-        // ============ 6º — IA e Habilidades Humanas — USP ============
+        // ============ IA e Habilidades Humanas — USP ============
         {
             category: 'pessoas',
             title: 'IA e Habilidades Humanas para Gestão de Equipes',
@@ -203,7 +207,7 @@ function initCertificates() {
             ],
         },
 
-        // ============ 7º — Representação de Turma — CEUB ============
+        // ============ Vice-Representante de Turma — CEUB ============
         {
             category: 'pessoas',
             title: 'Vice-Representante de Turma',
@@ -216,23 +220,23 @@ function initCertificates() {
             bullets: [
                 {
                     title: 'Liderança e Representação',
-                    text: 'Atuação direta como vice-representante da turma de Engenharia de Software no CEUB[cite: 1, 2].',
+                    text: 'Atuação direta como vice-representante da turma de Engenharia de Software no CEUB.',
                 },
                 {
                     title: 'Período e Dedicação',
-                    text: 'Atividade exercida entre 09 de fevereiro e 04 de julho de 2026, com carga horária reconhecida de 20 horas[cite: 1, 2].',
+                    text: 'Atividade exercida entre 09 de fevereiro e 04 de julho de 2026, com carga horária reconhecida de 20 horas.',
                 },
                 {
                     title: 'Desenvolvimento de Soft Skills',
                     text: 'Aprimoramento prático de habilidades como mediação de demandas, escuta ativa, organização e comunicação institucional.',
                 },
             ],
-        }
+        },
     ];
 
     let activeCategory = 'todos';
 
-    // Abre o lightbox com a imagem
+    // Abre o lightbox com a imagem do certificado para leitura ampliada.
     function abrirLightbox(src) {
         const lightbox = document.getElementById('lightbox');
         const img = document.getElementById('lightbox-img');
@@ -241,6 +245,13 @@ function initCertificates() {
         lightbox.classList.add('aberto');
     }
 
+    // Converte o id da categoria no rótulo exibido no card.
+    function rotuloCategoria(id) {
+        const categoria = categories.find((c) => c.id === id);
+        return categoria ? categoria.label : '';
+    }
+
+    // Cria os botões de filtro e redesenha a lista ao trocar de categoria.
     function renderFilters() {
         const filtrosDiv = document.createElement('div');
         filtrosDiv.className = 'cert-filtros';
@@ -248,9 +259,7 @@ function initCertificates() {
         categories.forEach((cat) => {
             const btn = document.createElement('button');
             btn.className = 'cert-filtro-btn';
-            if (cat.id === activeCategory) {
-                btn.classList.add('ativo');
-            }
+            if (cat.id === activeCategory) btn.classList.add('ativo');
             btn.textContent = cat.label;
             btn.addEventListener('click', () => {
                 activeCategory = cat.id;
@@ -262,68 +271,62 @@ function initCertificates() {
         return filtrosDiv;
     }
 
-function renderCard(cert) {
+    // Cria o card compacto: instituição, curso e categoria visíveis, detalhes recolhidos no acordeão.
+    function renderCard(cert) {
+        const idDetalhe = `cert-detalhe-${certificates.indexOf(cert)}`;
         const article = document.createElement('article');
         article.className = 'cert-card reveal';
 
-        // Estrutura do Card: Cabeçalho visível + Detalhes ocultos + Botões
+        const botaoCertificado = cert.image
+            ? `<button type="button" class="btn-card" data-acao="certificado">Ver certificado</button>`
+            : `<button type="button" class="btn-card" disabled>Ver certificado</button>`;
+
         article.innerHTML = `
-            <div class="cert-header">
-                <div>
-                    <p class="cert-emissor ${cert.tone}">${cert.issuer}</p>
-                    <h3>${cert.title}</h3>
-                </div>
-            </div>
-            
-            <div class="cert-detalhes-container">
-                <p class="cert-meta">${cert.meta}</p>
-                <p class="cert-summary">${cert.summary}</p>
-                <div class="cert-bullets">
-                    ${cert.bullets
-                        .map(
-                            (b) => `
-                        <div class="cert-bullet">
-                            <p class="cert-bullet-title">${b.title}</p>
-                            <p class="cert-bullet-text">${b.text}</p>
+            <p class="cert-emissor ${cert.tone}">${cert.issuer}</p>
+            <h3>${cert.title}</h3>
+            <p class="cert-categoria">${rotuloCategoria(cert.category)}</p>
+
+            <div class="acordeao" id="${idDetalhe}">
+                <div class="acordeao-interno">
+                    <div class="acordeao-conteudo">
+                        <p class="cert-meta">${cert.meta}</p>
+                        <p class="cert-summary">${cert.summary}</p>
+                        <div class="cert-bullets">
+                            ${cert.bullets
+                                .map(
+                                    (b) => `
+                                <div class="cert-bullet">
+                                    <p class="cert-bullet-title">${b.title}</p>
+                                    <p class="cert-bullet-text">${b.text}</p>
+                                </div>
+                            `
+                                )
+                                .join('')}
                         </div>
-                    `
-                        )
-                        .join('')}
-                </div>
-                <div class="cert-focus">
-                    ${cert.focus.map((f) => `<span>${f}</span>`).join('')}
+                        <div class="chips">
+                            ${cert.focus.map((f) => `<span>${f}</span>`).join('')}
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="cert-actions">
-                <button class="cert-btn-mais">Ver mais sobre</button>
-                ${cert.image
-                    ? `<button class="cert-ver-btn" data-img="${cert.image}">Ver certificado</button>`
-                    : `<span class="cert-ver-btn sem-link" style="pointer-events:none; cursor:default;">Sem imagem</span>`
-                }
+            <div class="card-acoes">
+                <button type="button" class="btn-card btn-card-leve" data-acao="detalhes" aria-expanded="false" aria-controls="${idDetalhe}">
+                    Ver mais sobre o curso e tópicos ${ICONES.chevron}
+                </button>
+                ${botaoCertificado}
             </div>
         `;
 
-        // Lógica de Expandir/Recolher Detalhes
-        const btnMais = article.querySelector('.cert-btn-mais');
-        const containerDetalhes = article.querySelector('.cert-detalhes-container');
+        vincularAcordeao(
+            article.querySelector('[data-acao="detalhes"]'),
+            article.querySelector('.acordeao')
+        );
 
-        btnMais.addEventListener('click', () => {
-            const estaExpandido = containerDetalhes.classList.contains('expandido');
-            
-            if (estaExpandido) {
-                containerDetalhes.classList.remove('expandido');
-                btnMais.textContent = 'Ver mais sobre';
-            } else {
-                containerDetalhes.classList.add('expandido');
-                btnMais.textContent = 'Ocultar detalhes';
-            }
-        });
-
-        // Lógica do botão "Ver certificado" (Lightbox)
-        const btnVer = article.querySelector('.cert-ver-btn');
-        if (btnVer && cert.image) {
-            btnVer.addEventListener('click', (e) => {
+        // Abre a imagem no lightbox somente quando o certificado possui arquivo.
+        const btnCertificado = article.querySelector('[data-acao="certificado"]');
+        if (btnCertificado) {
+            btnCertificado.addEventListener('click', (e) => {
                 e.stopPropagation();
                 abrirLightbox(cert.image);
             });
@@ -332,6 +335,7 @@ function renderCard(cert) {
         return article;
     }
 
+    // Monta a grade com os certificados da categoria ativa.
     function renderCards() {
         const grid = document.createElement('div');
         grid.className = 'cert-grid';
@@ -341,13 +345,11 @@ function renderCard(cert) {
                 ? certificates
                 : certificates.filter((c) => c.category === activeCategory);
 
-        filtered.forEach((cert) => {
-            grid.appendChild(renderCard(cert));
-        });
-
+        filtered.forEach((cert) => grid.appendChild(renderCard(cert)));
         return grid;
     }
 
+    // Redesenha filtros e cards e reaplica a animação de entrada nos elementos novos.
     function renderAll() {
         container.innerHTML = '';
         container.appendChild(renderFilters());
@@ -357,9 +359,7 @@ function renderCard(cert) {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
                 });
             },
             { threshold: 0.1 }
