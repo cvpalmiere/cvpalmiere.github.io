@@ -7,14 +7,14 @@ function initCertificates() {
     const container = document.getElementById('certificates-container');
     if (!container) return;
 
-    // Categorias de filtro; o id é o mesmo usado no campo "category" de cada certificado.
+    // Categorias de filtro; Análise de Dados vem primeiro para ficar em foco e "Todos" fica por último.
     const categories = [
-        { id: 'todos', label: 'Todos' },
         { id: 'dados', label: 'Análise de Dados' },
         { id: 'db', label: 'Banco de Dados' },
         { id: 'dev', label: 'Desenvolvimento' },
         { id: 'ia', label: 'IA' },
         { id: 'pessoas', label: 'Gestão de Pessoas' },
+        { id: 'todos', label: 'Todos' },
     ];
 
     // Lista ordenada por relevância para o objetivo atual (dados e BI primeiro).
@@ -234,7 +234,8 @@ function initCertificates() {
         },
     ];
 
-    let activeCategory = 'todos';
+    // Filtro inicial em Análise de Dados para que a página abra com o foco da carreira.
+    let activeCategory = 'dados';
 
     // Abre o lightbox com a imagem do certificado para leitura ampliada.
     function abrirLightbox(src) {
