@@ -2,17 +2,48 @@
 // PROJECTS.JS — Renderiza os projetos separados por categoria
 // ============================================================
 
-// Monta toda a seção de projetos; depende de ICONES e vincularAcordeao (Ui.js).
+// Monta toda a seção de projetos; depende de ICONES, vincularAcordeao e abrirLightbox (Ui.js).
 function initProjects() {
     const container = document.getElementById('projetos-container');
     if (!container) return;
 
     // Categorias na ordem de exibição; listas vazias exibem a mensagem "vazio" para manter a estrutura.
+    // Cada projeto usa "detalhe" (parágrafo único) ou "blocos" (título e texto); "imagens" e "rotuloDetalhes" são opcionais.
     const categorias = [
         {
             titulo: 'Análise de Dados & BI',
-            vazio: 'Em breve. Os primeiros painéis em Power BI entram aqui assim que ficarem prontos.',
-            projetos: [],
+            projetos: [
+                {
+                    tag: 'Exercício integrado · Dados',
+                    titulo: 'Investigação de Dados: Carmem Sandiego',
+                    resumo: 'Limpeza de mais de 2.000 linhas no Excel, 1 suspeita isolada por 8 pistas em PostgreSQL e um dashboard no Power BI que responde perguntas como qual profissão mais gasta.',
+                    rotuloDetalhes: 'Ver dashboard, query e problemas resolvidos',
+                    blocos: [
+                        {
+                            titulo: 'Objetivo',
+                            texto: 'Treinar o fluxo completo de dados (CSV sujo, limpeza, banco, consulta e visualização) em um mistério com 2.000 suspeitos e 8 pistas.',
+                        },
+                        {
+                            titulo: 'O que fiz',
+                            texto: 'Limpei e padronizei mais de 2.000 linhas no Excel: duplicatas, textos, datas em 4 formatos, valores monetários, booleanos e nulos. Carreguei os dados no Neon com um script em Python, isolei a única suspeita com uma query que combina as 8 pistas e montei o dashboard no Power BI a partir dessas tabelas.',
+                        },
+                        {
+                            titulo: 'Problemas resolvidos',
+                            texto: 'Identificar 1 suspeita entre 2.000 registros cruzando 8 pistas em uma única query. No dashboard, responder perguntas sobre os dados limpos, como qual profissão mais gasta.',
+                        },
+                        {
+                            titulo: 'Aprendizado',
+                            texto: 'Validar por chave (id) em vez de posição de linha, depois de um desalinhamento de datas, e usar mediana e contagem no lugar de soma.',
+                        },
+                    ],
+                    imagens: [
+                        { rotulo: 'Ver query', src: 'assets/projetos/carmenQuery.png' },
+                        { rotulo: 'Ver dashboard', src: 'assets/projetos/PowerBiCarmen.png' },
+                    ],
+                    stack: ['Excel', 'SQL', 'PostgreSQL', 'Power BI', 'Python', 'Prisma'],
+                    repo: 'https://github.com/cvpalmiere/exercicios',
+                },
+            ],
         },
         {
             titulo: 'Python & Automação',
@@ -85,6 +116,42 @@ function initProjects() {
         return `<span class="btn-card desativado">${projeto.repoRotulo || 'Sem repositório'}</span>`;
     }
 
+    // Gera o conteúdo do acordeão: blocos curtos quando existem, ou o parágrafo único como padrão.
+    // Os blocos reaproveitam as classes de bullet dos certificados para manter o mesmo visual.
+    function renderDetalhe(projeto) {
+        if (!projeto.blocos) {
+            return `<p class="projeto-detalhe">${projeto.detalhe}</p>`;
+        }
+        return `
+            <div class="cert-bullets">
+                ${projeto.blocos
+                    .map(
+                        (bloco) => `
+                    <div class="cert-bullet">
+                        <p class="cert-bullet-title">${bloco.titulo}</p>
+                        <p class="cert-bullet-text">${bloco.texto}</p>
+                    </div>
+                `
+                    )
+                    .join('')}
+            </div>
+        `;
+    }
+
+    // Gera os botões que abrem as imagens do projeto (query, dashboard) no lightbox, quando houver.
+    function renderImagens(projeto) {
+        if (!projeto.imagens) return '';
+        return `
+            <div class="card-acoes">
+                ${projeto.imagens
+                    .map(
+                        (img) => `<button type="button" class="btn-card" data-imagem="${img.src}">${ICONES.imagem} ${img.rotulo}</button>`
+                    )
+                    .join('')}
+            </div>
+        `;
+    }
+
     // Cria um projeto com visual essencial e detalhes recolhidos em acordeão.
     function renderProjeto(projeto, idDetalhe) {
         const item = document.createElement('article');
@@ -97,7 +164,8 @@ function initProjects() {
             <div class="acordeao" id="${idDetalhe}">
                 <div class="acordeao-interno">
                     <div class="acordeao-conteudo">
-                        <p class="projeto-detalhe">${projeto.detalhe}</p>
+                        ${renderDetalhe(projeto)}
+                        ${renderImagens(projeto)}
                         <div class="chips">
                             ${projeto.stack.map((tech) => `<span>${tech}</span>`).join('')}
                         </div>
@@ -105,14 +173,20 @@ function initProjects() {
                 </div>
             </div>
             <div class="card-acoes">
-                <button type="button" class="btn-card btn-card-leve" aria-expanded="false" aria-controls="${idDetalhe}">
-                    Ver mais sobre ${ICONES.chevron}
+                <button type="button" class="btn-card btn-card-leve" data-acao="detalhes" aria-expanded="false" aria-controls="${idDetalhe}">
+                    ${projeto.rotuloDetalhes || 'Ver mais sobre'} ${ICONES.chevron}
                 </button>
                 ${renderBotaoRepo(projeto)}
             </div>
         `;
 
-        vincularAcordeao(item.querySelector('button'), item.querySelector('.acordeao'));
+        vincularAcordeao(item.querySelector('[data-acao="detalhes"]'), item.querySelector('.acordeao'));
+
+        // Abre cada imagem do projeto no lightbox ao clicar no botão correspondente.
+        item.querySelectorAll('[data-imagem]').forEach((botao) => {
+            botao.addEventListener('click', () => abrirLightbox(botao.dataset.imagem));
+        });
+
         return item;
     }
 

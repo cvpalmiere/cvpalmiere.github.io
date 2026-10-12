@@ -2,7 +2,7 @@
 // CERTIFICATES.JS — Renderiza os certificados em cards compactos
 // ============================================================
 
-// Monta filtros e cards; depende de ICONES, vincularAcordeao (Ui.js) e do lightbox da página.
+// Monta filtros e cards; depende de ICONES, vincularAcordeao e abrirLightbox (Ui.js).
 function initCertificates() {
     const container = document.getElementById('certificates-container');
     if (!container) return;
@@ -236,15 +236,6 @@ function initCertificates() {
 
     // Filtro inicial em Análise de Dados para que a página abra com o foco da carreira.
     let activeCategory = 'dados';
-
-    // Abre o lightbox com a imagem do certificado para leitura ampliada.
-    function abrirLightbox(src) {
-        const lightbox = document.getElementById('lightbox');
-        const img = document.getElementById('lightbox-img');
-        if (!lightbox || !img) return;
-        img.src = src;
-        lightbox.classList.add('aberto');
-    }
 
     // Converte o id da categoria no rótulo exibido no card.
     function rotuloCategoria(id) {

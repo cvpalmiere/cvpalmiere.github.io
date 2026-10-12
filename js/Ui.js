@@ -1,5 +1,5 @@
 // ============================================================
-// UI.JS — Ícones SVG e comportamento de acordeão compartilhados
+// UI.JS — Ícones SVG, acordeão e lightbox compartilhados
 // ============================================================
 
 // Gera um ícone SVG a partir dos traçados, evitando repetir os atributos em cada ícone.
@@ -11,6 +11,7 @@ function criarIcone(tracados, classeExtra = '') {
 const ICONES = {
     chevron: criarIcone('<path d="m6 9 6 6 6-6"/>', 'icone-chevron'),
     externo: criarIcone('<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>'),
+    imagem: criarIcone('<rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>'),
     menu: criarIcone('<path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/>'),
     fechar: criarIcone('<path d="M18 6 6 18"/><path d="m6 6 12 12"/>'),
 };
@@ -22,4 +23,13 @@ function vincularAcordeao(botao, painel) {
         botao.classList.toggle('aberto', aberto);
         botao.setAttribute('aria-expanded', String(aberto));
     });
+}
+
+// Abre o lightbox da página com a imagem informada; compartilhado por certificados e projetos.
+function abrirLightbox(src) {
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    if (!lightbox || !img) return;
+    img.src = src;
+    lightbox.classList.add('aberto');
 }
