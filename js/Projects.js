@@ -8,11 +8,45 @@ function initProjects() {
     if (!container) return;
 
     // Categorias na ordem de exibição; listas vazias exibem a mensagem "vazio" para manter a estrutura.
-    // Cada projeto usa "detalhe" (parágrafo único) ou "blocos" (título e texto); "imagens" e "rotuloDetalhes" são opcionais.
+    // Cada projeto usa "detalhe" (parágrafo único) ou "blocos" (título e texto);
+    // "imagens" (abrem no lightbox), "documentos" (abrem em nova aba) e "rotuloDetalhes" são opcionais.
     const categorias = [
         {
             titulo: 'Análise de Dados & BI',
             projetos: [
+                {
+                    tag: 'Estudo guiado · Dados reais',
+                    titulo: 'Painel de Inflação: IPCA / IBGE',
+                    resumo: 'Análise de 6 anos de IPCA com dados reais do IBGE: script em Python, banco normalizado no PostgreSQL, queries em SQL e dashboard no Power BI. A inflação acumulada de 2020 a 2025 foi de 39,15%, com Alimentação e bebidas liderando (53,99%).',
+                    rotuloDetalhes: 'Ver dashboard, query e descobertas',
+                    blocos: [
+                        {
+                            titulo: 'Objetivo',
+                            texto: 'Responder à pergunta "o que anda pesando no custo de vida e isso mudou ao longo dos anos?", comparando grupos de produtos e períodos com dados reais do IBGE.',
+                        },
+                        {
+                            titulo: 'O que fiz',
+                            texto: 'Baixei o IPCA de 2020 a 2025 da tabela 7060 do SIDRA/IBGE por script em Python e organizei os dados em um banco PostgreSQL normalizado no Neon. Escrevi queries em SQL para acumulado, impacto e volatilidade, montei o painel no Power BI e reuni as conclusões em um PDF de análise.',
+                        },
+                        {
+                            titulo: 'Problemas resolvidos',
+                            texto: 'A inflação saltou de 4,52% em 2020 para 10,06% em 2021 e desacelerou depois. Alimentação e bebidas foi o grupo que mais subiu e também o que mais pesou no bolso (cerca de 9,09 pontos percentuais de impacto). Vestuário teve a segunda maior alta, mas impacto de só 1,61, por ter peso pequeno na cesta.',
+                        },
+                        {
+                            titulo: 'Aprendizado',
+                            texto: 'Percentuais não se somam: em Saúde, a soma simples dava 34,89% e a composição das taxas dá 40,03%. Também aprendi a definir o período de comparação antes de olhar os números e a usar a mediana quando o reajuste se concentra em um mês, como na Educação em fevereiro (média 0,47 contra mediana 0,06).',
+                        },
+                    ],
+                    imagens: [
+                        { rotulo: 'Ver query', src: 'assets/projetos/queryInflacao.png' },
+                        { rotulo: 'Ver dashboard', src: 'assets/projetos/powerBiInflacao.png' },
+                    ],
+                    documentos: [
+                        { rotulo: 'Ver análise (PDF)', href: 'assets/projetos/analiseInflacaoIBGE.pdf' },
+                    ],
+                    stack: ['Python', 'SQL', 'PostgreSQL', 'Power BI', 'IBGE / SIDRA'],
+                    repo: 'https://github.com/cvpalmiere/exercicios',
+                },
                 {
                     tag: 'Exercício integrado · Dados',
                     titulo: 'Investigação de Dados: Carmem Sandiego',
@@ -138,18 +172,18 @@ function initProjects() {
         `;
     }
 
-    // Gera os botões que abrem as imagens do projeto (query, dashboard) no lightbox, quando houver.
-    function renderImagens(projeto) {
-        if (!projeto.imagens) return '';
-        return `
-            <div class="card-acoes">
-                ${projeto.imagens
-                    .map(
-                        (img) => `<button type="button" class="btn-card" data-imagem="${img.src}">${ICONES.imagem} ${img.rotulo}</button>`
-                    )
-                    .join('')}
-            </div>
-        `;
+    // Gera os botões de mídia do projeto: imagens abrem no lightbox e documentos abrem em nova aba.
+    function renderMidias(projeto) {
+        const botoesImagem = (projeto.imagens || []).map(
+            (img) => `<button type="button" class="btn-card" data-imagem="${img.src}">${ICONES.imagem} ${img.rotulo}</button>`
+        );
+        const linksDocumento = (projeto.documentos || []).map(
+            (doc) => `<a href="${doc.href}" target="_blank" rel="noreferrer" class="btn-card">${ICONES.externo} ${doc.rotulo}</a>`
+        );
+
+        const botoes = [...botoesImagem, ...linksDocumento];
+        if (botoes.length === 0) return '';
+        return `<div class="card-acoes">${botoes.join('')}</div>`;
     }
 
     // Cria um projeto com visual essencial e detalhes recolhidos em acordeão.
@@ -165,7 +199,7 @@ function initProjects() {
                 <div class="acordeao-interno">
                     <div class="acordeao-conteudo">
                         ${renderDetalhe(projeto)}
-                        ${renderImagens(projeto)}
+                        ${renderMidias(projeto)}
                         <div class="chips">
                             ${projeto.stack.map((tech) => `<span>${tech}</span>`).join('')}
                         </div>
