@@ -18,6 +18,7 @@ function initNavbar() {
 
                 <div class="navbar-links" id="navbar-links">
                     <a href="#sobre">Sobre</a>
+                    <a href="#experiencias">Experiências</a>
                     <a href="#projetos">Projetos</a>
                     <a href="#certificados">Certificados</a>
                     <a href="#contato">Contato</a>
@@ -32,6 +33,7 @@ function initNavbar() {
 
             <div class="navbar-mobile" id="navbar-mobile">
                 <a href="#sobre">Sobre</a>
+                <a href="#experiencias">Experiências</a>
                 <a href="#projetos">Projetos</a>
                 <a href="#certificados">Certificados</a>
                 <a href="#contato">Contato</a>

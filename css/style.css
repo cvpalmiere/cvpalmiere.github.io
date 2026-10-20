@@ -325,6 +325,47 @@ h2 { font-size: 2rem; margin-bottom: 2.5rem; }
 }
 
 /* ============================================================
+   EXPERIÊNCIAS PROFISSIONAIS — linha do tempo vertical
+   ============================================================ */
+/* Linha vertical à esquerda que conecta as experiências em ordem cronológica */
+.exp-lista {
+    display: flex; flex-direction: column; gap: 2.5rem;
+    border-left: 1px solid var(--border);
+    padding-left: 1.75rem; margin-left: 0.35rem;
+}
+.exp-item { position: relative; max-width: 760px; }
+/* Marcador circular alinhado exatamente sobre a linha vertical */
+.exp-item::before {
+    content: ''; position: absolute;
+    left: calc(-1.75rem - 4px); top: 0.4rem;
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 4px var(--bg);
+}
+.exp-empresa {
+    font-size: 0.65rem; text-transform: uppercase;
+    letter-spacing: 0.15em; font-weight: 500; color: var(--ember);
+}
+.exp-cargo { font-size: 1.2rem; font-weight: 600; margin-top: 0.4rem; line-height: 1.3; }
+.exp-periodo {
+    font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-muted); opacity: 0.6; margin-top: 0.3rem;
+}
+.exp-resumo {
+    font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; margin-top: 0.9rem;
+}
+.exp-pontos { list-style: none; margin-top: 0.9rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.exp-pontos li {
+    position: relative; padding-left: 1.1rem;
+    font-size: 0.82rem; color: var(--text-muted); line-height: 1.7;
+}
+/* Traço decorativo no lugar do marcador padrão da lista */
+.exp-pontos li::before {
+    content: ''; position: absolute; left: 0; top: 0.8em;
+    width: 6px; height: 1px; background: var(--primary);
+}
+
+/* ============================================================
    PROJETOS — categorias com lista compacta
    ============================================================ */
 .projetos-categoria { margin-bottom: 3.5rem; }

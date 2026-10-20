@@ -2,10 +2,11 @@
 // MAIN.JS — Orquestra todo o portfólio
 // ============================================================
 
-// Inicializa os módulos após o DOM carregar; Projects roda antes do reveal para ter seus elementos observados.
+// Inicializa os módulos após o DOM carregar; seções dinâmicas rodam antes do reveal para terem seus elementos observados.
 document.addEventListener('DOMContentLoaded', () => {
     initSphere();
     initNavbar();
+    initExperiences();
     initProjects();
     initCertificates();
     initRevealAnimations();

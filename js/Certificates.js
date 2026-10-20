@@ -181,32 +181,6 @@ function initCertificates() {
             ],
         },
 
-        // ============ IA e Habilidades Humanas — USP ============
-        {
-            category: 'pessoas',
-            title: 'IA e Habilidades Humanas para Gestão de Equipes',
-            issuer: 'USP',
-            meta: 'Liderança · Times de tecnologia',
-            focus: ['Gestão', 'Soft skills', 'IA no trabalho'],
-            tone: 'sage',
-            image: 'assets/certificados/gestao_ia_pessoas.png',
-            summary: 'Curso com foco no lado humano do desenvolvimento: como conduzir pessoas em times de tecnologia em um mercado transformado pela inteligência artificial.',
-            bullets: [
-                {
-                    title: 'O papel da IA',
-                    text: 'Como a inteligência artificial vem sendo usada no mercado hoje e o que muda no dia a dia dos times.',
-                },
-                {
-                    title: 'Gestão de equipes',
-                    text: 'Como gerenciar pessoas em um ambiente de desenvolvimento, com foco no lado humano do trabalho.',
-                },
-                {
-                    title: 'Diferencial de portfólio',
-                    text: 'Mostra preparo para entender tanto as tecnologias quanto as pessoas que as constroem.',
-                },
-            ],
-        },
-
         // ============ Vice-Representante de Turma — CEUB ============
         {
             category: 'pessoas',
